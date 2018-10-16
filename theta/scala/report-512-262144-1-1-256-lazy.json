@@ -1,0 +1,31 @@
+{
+  "experiment" : {
+    "id" : "simplemap-spark-scala"
+  },
+  "args" : {
+    "src" : "",
+    "dst" : "",
+    "cores" : "256",
+    "generate" : "true",
+    "lazy" : "true",
+    "blocks" : "262144",
+    "block_size" : "1",
+    "multiplier" : "1048576",
+    "block_size_unit" : "MB",
+    "nparts" : "1",
+    "size" : "1",
+    "nodes" : "512",
+    "json" : "report-512-262144-1-1-256-lazy.json",
+    "xml" : "",
+    "functional" : "false",
+    "hybrid" : "false",
+    "imperative" : "false"
+  },
+  "performance" : {
+    "map" : "1.857934374",
+    "shift" : "2.39850728",
+    "reduce" : "179.615283154",
+    "average" : "0.019262226",
+    "overall" : "183.890987034"
+  }
+}

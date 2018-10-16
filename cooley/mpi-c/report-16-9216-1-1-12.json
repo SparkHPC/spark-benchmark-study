@@ -1,0 +1,16 @@
+{
+	"args": {
+		"block_size": 1,
+		"block": 9216,
+		"block_per_rank": 50331648,
+		"cores": 12,
+		"nodes": 16
+	},
+	"performance": {
+		"generate": 4.65142202,
+		"shift": 1.32550788,
+		"average": 0.76329684,
+		"reduce": 1.17796087,
+		"overall": 6.28586745
+	}
+}

@@ -1,0 +1,9 @@
+#!/bin/bash
+
+node=$1
+blocks=$2
+
+aprun -b -n $((node*128)) -N 128 -j 2 -d 1 -cc depth \
+	../../simplemap-mpi-c/simplemap \
+	-b $blocks -k 1 -n $node -c 128 \
+	-j report-$node-$blocks-1-1-128.json

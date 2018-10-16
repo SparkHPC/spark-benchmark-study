@@ -1,0 +1,9 @@
+#!/bin/bash
+
+node=$1
+blocks=$2
+
+mpirun -f $COBALT_NODEFILE -n $((node*12)) \
+	../../simplemap-mpi-c/simplemap \
+	-b $blocks -k 1 -n $node -c 12 \
+	-j report-$node-$blocks-1-1-12.json

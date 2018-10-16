@@ -1,0 +1,10 @@
+#!/bin/bash
+
+for node in 128 256 512 1024;do
+
+((blocks = 512*256))
+if ((node == 256));then continue;fi
+
+qsub -n $node -A datascience -t 60 -q default ./r $node $blocks
+
+done

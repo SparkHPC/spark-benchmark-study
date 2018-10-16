@@ -1,0 +1,9 @@
+#!/bin/bash
+
+for node in 1 2 4 8 16 32 64 96;do
+
+((blocks = 256*3*node))
+
+qsub -n $node -A datascience -t 30 -q default ./r $node $blocks
+
+done

@@ -1,0 +1,19 @@
+#!/bin/bash
+
+for node in 1 2 4 8 16 32 64 96;do
+
+((blocks = 256*3*node))
+
+
+/soft/datascience/Cooley_Spark/submit-spark.sh \
+	-A datascience -t 60 -n $node -q default \
+	/projects/datascience/xyjin/simplemap-spark-python/spark_benchmark_hpc.py \
+	--generate --blocks $blocks --block_size 1 --nodes $node --nparts 1 --cores 12 \
+	--json report-$node-$blocks-1-1-12.json
+/soft/datascience/Cooley_Spark/submit-spark.sh \
+	-A datascience -t 60 -n $node -q default \
+	/projects/datascience/xyjin/simplemap-spark-python/spark_benchmark_hpc.py \
+	--generate --blocks $blocks --block_size 1 --nodes $node --nparts 1 --cores 12 \
+	--json report-$node-$blocks-1-1-12-lazy.json --lazy
+
+done

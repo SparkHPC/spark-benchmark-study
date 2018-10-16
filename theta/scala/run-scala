@@ -1,0 +1,10 @@
+#!/bin/bash
+
+for node in 128 256 512 1024;do
+
+((blocks = 512*node))
+
+qsub -n $node -A datascience -t 60 -q default ./run-all --class dataflows.spark.SparkBenchmarkHPC local:///projects/datascience/xyjin/simplemap-spark-scala/target/scala-2.11/simplemap-spark-scala-assembly-1.0.jar --generate --blocks $blocks --block_size 1 --nodes $node --nparts 1 --cores 256 --json report-$node-$blocks-1-1-256-lazy.json --lazy
+qsub -n $node -A datascience -t 60 -q default ./run-all --class dataflows.spark.SparkBenchmarkHPC local:///projects/datascience/xyjin/simplemap-spark-scala/target/scala-2.11/simplemap-spark-scala-assembly-1.0.jar --generate --blocks $blocks --block_size 1 --nodes $node --nparts 1 --cores 256 --json report-$node-$blocks-1-1-256.json
+
+done

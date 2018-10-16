@@ -1,0 +1,23 @@
+{
+    "args": {
+        "block_size": 1,
+        "blocks": 131072,
+        "cores": 256,
+        "generate": true,
+        "json": "report-1024-131072-1-1-256-lazy.json",
+        "lazy": true,
+        "multiplier": 1048576,
+        "nodes": 1024,
+        "nparts": 1
+    },
+    "experiment": {
+        "id": "simplemap-spark-python"
+    },
+    "performance": {
+        "average": 2.193450927734375e-05,
+        "map": 1.6203758716583252,
+        "overall": 349.1589524745941,
+        "reduce": 347.53839564323425,
+        "shift": 0.00010061264038085938
+    }
+}

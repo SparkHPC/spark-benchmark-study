@@ -1,0 +1,23 @@
+#!/bin/bash
+
+for node in 1 2 4 8 16 32 64 96;do
+
+((blocks = 256*3*12))
+
+while ! /soft/datascience/Cooley_Spark/submit-spark.sh \
+	-A datascience -t 60 -n $node -q default \
+	--class dataflows.spark.SparkBenchmarkHPC \
+	local:///projects/datascience/xyjin/simplemap-spark-scala/target/scala-2.11/simplemap-spark-scala-assembly-1.0.jar \
+	--generate --blocks $blocks --block_size 1 --nodes $node --nparts 1 --cores 12 \
+	--json report-$node-$blocks-1-1-12.json
+do sleep 60;done
+
+while ! /soft/datascience/Cooley_Spark/submit-spark.sh \
+	-A datascience -t 60 -n $node -q default \
+	--class dataflows.spark.SparkBenchmarkHPC \
+	local:///projects/datascience/xyjin/simplemap-spark-scala/target/scala-2.11/simplemap-spark-scala-assembly-1.0.jar \
+	--generate --blocks $blocks --block_size 1 --nodes $node --nparts 1 --cores 12 \
+	--json report-$node-$blocks-1-1-12-lazy.json --lazy
+do sleep 60;done
+
+done

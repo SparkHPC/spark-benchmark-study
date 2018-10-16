@@ -1,0 +1,14 @@
+#!/bin/bash
+
+for node in 128 256 512 1024;do
+
+((blocks = 512*256))
+if ((node == 256));then continue;fi
+
+while ! qsub -n $node -A datascience -t 60 -q default ./run-all /projects/datascience/xyjin/simplemap-spark-python/spark_benchmark_hpc.py --generate --blocks $blocks --block_size 1 --nodes $node --nparts 1 --cores 256 --json report-$node-$blocks-1-1-256-lazy.json --lazy
+do sleep 600;done
+
+while ! qsub -n $node -A datascience -t 60 -q default ./run-all /projects/datascience/xyjin/simplemap-spark-python/spark_benchmark_hpc.py --generate --blocks $blocks --block_size 1 --nodes $node --nparts 1 --cores 256 --json report-$node-$blocks-1-1-256.json
+do sleep 600;done
+
+done
